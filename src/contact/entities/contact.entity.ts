@@ -6,7 +6,7 @@ export class Contact {
   id: number;
 
   @Column({ nullable: true })
-  phoneNumber: string;
+  phoneNumber: string | number;
 
   @Column({ nullable: true })
   email: string;
