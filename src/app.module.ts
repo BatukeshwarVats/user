@@ -10,11 +10,11 @@ import { ConnectionOptions } from 'typeorm';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'contacts',
+      host: process.env.HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DATABASE,
       entities: [Contact],
       synchronize: true
       } as ConnectionOptions),
