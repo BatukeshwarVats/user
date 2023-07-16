@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IdentifyContactDto } from './dto/identify-contact.dto';
 import { Contact } from './entities/contact.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOperator, Repository } from 'typeorm';
 
 @Injectable()
 export class ContactService {
@@ -13,10 +13,10 @@ export class ContactService {
 
   async identifyContact(identifyContactDto: IdentifyContactDto) {
     const { email, phoneNumber } = identifyContactDto;
-    
+    const phoneNumberString: string = String(phoneNumber);
     // Check if the contact already exists with the given email or phone number
     const existingContact = await this.contactRepository.findOne({
-      where: [{ email }, { phoneNumber }],
+      where: [{ email }, { phoneNumber : phoneNumberString}],
     });
 
     if (existingContact) {
@@ -25,7 +25,7 @@ export class ContactService {
         (existingContact.email && email && existingContact.email !== email) ||
         (existingContact.phoneNumber &&
           phoneNumber &&
-          existingContact.phoneNumber !== phoneNumber)
+          existingContact.phoneNumber !== phoneNumberString)
       ) {
         // Create a new secondary contact with the updated information
         const secondaryContact = this.contactRepository.create({
