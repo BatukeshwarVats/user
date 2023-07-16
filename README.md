@@ -25,8 +25,10 @@
   ## Description
 => Assignment named as "user" it contains apis to identify weather a user already exists or not.\
 => Built using NestJs Framework\
-=> DB user: MYSQL
-
+=> DB used: MYSQL\
+=>Service has two end endpoints:\
+  1.baseurl/    GET request as warmup request\
+  2.baseurl/contact/identify  POST request
 ## Installation
 
 ```bash
@@ -39,14 +41,17 @@ $ npm install
 # watch mode
 $ npm run start:dev
 
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+# Request format for indntify request\
+POST Request 
+
+With body:
+
+{
+    "email":"test@gmail.com",
+    "phoneNumber": 99999
+}
 ```
 
 

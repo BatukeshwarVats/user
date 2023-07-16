@@ -7,6 +7,7 @@ import { IdentifyContactDto } from './dto/identify-contact.dto';
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
+  // API endpoint for identifying user
   @Post('/identify')
   identify(@Body() identifyContactDto: IdentifyContactDto) {
     return this.contactService.identifyContact(identifyContactDto);

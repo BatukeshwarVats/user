@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IdentifyContactDto } from './dto/identify-contact.dto';
 import { Contact } from './entities/contact.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOperator, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ContactService {
