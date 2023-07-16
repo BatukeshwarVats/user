@@ -18,6 +18,8 @@ export class ContactService {
     const existingContact = await this.contactRepository.findOne({
       where: [{ email }, { phoneNumber : phoneNumberString}],
     });
+    console.log("Existing contact: ", existingContact);
+    
 
     if (existingContact) {
       // If an existing contact is found with a common email or phone number
@@ -67,6 +69,7 @@ export class ContactService {
         phoneNumbers: [primaryContact.phoneNumber],
         secondaryContactIds: [],
       };
+      
 
       return { contact };
     }

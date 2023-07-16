@@ -41,7 +41,7 @@ $ npm install
 # watch mode
 $ npm run start:dev
 
-
+# Base url : https://magnificent-peplum-crow.cyclic.app/
 
 # Request format for indntify request\
 POST Request 

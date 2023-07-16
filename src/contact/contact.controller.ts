@@ -10,6 +10,8 @@ export class ContactController {
   // API endpoint for identifying user
   @Post('/identify')
   identify(@Body() identifyContactDto: IdentifyContactDto) {
+    console.log("Request Recieved.");
+    
     return this.contactService.identifyContact(identifyContactDto);
   }
 
