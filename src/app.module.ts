@@ -2,9 +2,24 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ContactModule } from './contact/contact.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Contact } from './contact/entities/contact.entity';
+import { ConnectionOptions } from 'typeorm';
 
 @Module({
-  imports: [ContactModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '127.0.0.1',
+      port: 3306,
+      username: 'root',
+      password: 'password',
+      database: 'contacts',
+      entities: [Contact],
+      synchronize: true
+      } as ConnectionOptions),
+    ContactModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

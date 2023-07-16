@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Contact {
@@ -6,7 +6,7 @@ export class Contact {
   id: number;
 
   @Column({ nullable: true })
-  phoneNumber: string | number;
+  phoneNumber: string;
 
   @Column({ nullable: true })
   email: string;
@@ -17,12 +17,12 @@ export class Contact {
   @Column({ default: 'primary' })
   linkPrecedence: 'primary' | 'secondary';
 
-  @Column({ type: 'datetime' })
+  @CreateDateColumn({ type: 'datetime' })
   createdAt: Date;
 
-  @Column({ type: 'datetime' })
+  @CreateDateColumn({ type: 'datetime' })
   updatedAt: Date;
 
-  @Column({ type: 'datetime', nullable: true })
-  deletedAt: Date;
+  @CreateDateColumn({ type: 'datetime', nullable: true })
+  deletedAt: Date = null;
 }
