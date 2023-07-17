@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   app:
     build:
@@ -6,6 +6,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_NAME=contacts
     depends_on:
       - db
   db:
