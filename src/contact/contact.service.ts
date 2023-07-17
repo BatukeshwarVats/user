@@ -18,7 +18,6 @@ export class ContactService {
     const existingContact = await this.contactRepository.findOne({
       where: [{ email }, { phoneNumber : phoneNumberString}],
     });
-    console.log("Existing contact: ", existingContact);
     
 
     if (existingContact) {
